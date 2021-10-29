@@ -34,33 +34,16 @@ namespace ContractsOfFirmsApplication.AZujkov.Classes
         public bool AddNewProperties(string name)
         {
             bool flagresult = false;
-            string query = string.Format("INSERT INTO dbo.Users (Name) VALUES ('{0}')", name);
+            string query = string.Format("INSERT INTO dbo.Properties (Name) VALUES ('{0}')", name);
+            ConnectToDataBase(query, flagresult);
             return flagresult;
         }
         public bool AddNewOrder(UInt16 contractId, DateTime createDate, UInt16 userId)
         {
             bool flagresult = false;
             string query = string.Format("INSERT INTO dbo.Orders (ContractId, CreateDate, UserId) VALUES ('{0}', '{1}', '{2}')", contractId, createDate, userId);
+            ConnectToDataBase(query, flagresult);
             return flagresult;
-        }
-        public void ConnectToDataBase(string query, bool flagresult)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                try
-                {
-                    connection.Open();
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        flagresult = true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
     }
 }

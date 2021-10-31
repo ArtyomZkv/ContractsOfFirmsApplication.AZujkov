@@ -15,5 +15,23 @@ namespace ContractsOfFirmsApplication.AZujkov.Classes
             ConnectToDataBase(query, flagresult, changedRecordsCount);
             return flagresult;
         }
+        public bool FirmsUpdateRecordsFunction(string query)
+        {
+            bool flagresult = false;
+            ConnectToDataBase(query, flagresult, changedRecordsCount);
+            return flagresult;
+        }
+        public bool PeopleUpdateRecordsFunction(string query)
+        {
+            bool flagresult = false;
+            ConnectToDataBase(query, flagresult, changedRecordsCount);
+            return flagresult;
+        }
+        public bool PropertiesUpdateRecordsFunction(string query)
+        {
+            bool flagresult = false;
+            ConnectToDataBase(query, flagresult, changedRecordsCount);
+            return flagresult;
+        }
     }
 }

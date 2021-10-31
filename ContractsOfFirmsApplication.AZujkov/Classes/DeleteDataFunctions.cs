@@ -8,6 +8,11 @@ namespace ContractsOfFirmsApplication.AZujkov.Classes
 {
     class DeleteDataFunctions : ConnectionWork
     {
-
+        public bool BaseDeleteRecordFunciton(string query)
+        {
+            bool flagresult = false;
+            ConnectToDataBase(query, flagresult);
+            return flagresult;
+        }
     }
 }

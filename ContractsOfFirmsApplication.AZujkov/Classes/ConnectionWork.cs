@@ -11,9 +11,9 @@ namespace ContractsOfFirmsApplication.AZujkov.Classes
 {
     class ConnectionWork
     {
-        public string connectionString = @"Data Source = DESKTOP-HKUF1MT\SQLEXPRESS, Initial Catalog = ContractsOfFirmsDB,"+
+        public string connectionString = @"Data Source = DESKTOP-HKUF1MT\SQLEXPRESS, Initial Catalog = ContractsOfFirmsDB," +
             "Intagrated Security = true";
-        public void ConnectToDataBase(string query, bool flagresult)
+        public void ConnectToDataBase(string query, bool flagresult, byte changedRecordsCount)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -21,7 +21,7 @@ namespace ContractsOfFirmsApplication.AZujkov.Classes
                 try
                 {
                     connection.Open();
-                    if (command.ExecuteNonQuery() == 1)
+                    if (command.ExecuteNonQuery() == changedRecordsCount)
                     {
                         flagresult = true;
                     }
